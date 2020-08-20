@@ -29,5 +29,56 @@ return [
         ],
     ],
 
+    'level' => [
+        'title' => 'Levels',
+
+        'actions' => [
+            'index' => 'Levels',
+            'create' => 'New Level',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            
+        ],
+    ],
+
+    'role' => [
+        'title' => 'Roles',
+
+        'actions' => [
+            'index' => 'Roles',
+            'create' => 'New Role',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'name' => "Name",
+            'guard_name' => "Guard name",
+            
+        ],
+    ],
+
+    'grade' => [
+        'title' => 'Grades',
+
+        'actions' => [
+            'index' => 'Grades',
+            'create' => 'New Grade',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            'level_id' => 'Level',
+            'enabled' => "Enabled",
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

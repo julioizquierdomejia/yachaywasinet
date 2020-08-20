@@ -16,4 +16,19 @@ $factory->define(Brackets\AdminAuth\Models\AdminUser::class, function (Faker\Gen
         'updated_at' => $faker->dateTime,
         
     ];
+});/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Level::class, function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
 });
+
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Grade::class, function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+
