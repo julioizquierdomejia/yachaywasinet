@@ -21,7 +21,7 @@ class Role extends Model
     ];
     
     
-    public $timestamps = false;
+    public $timestamps = true;
     
     protected $appends = ['resource_url'];
 

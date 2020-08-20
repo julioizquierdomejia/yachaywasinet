@@ -27,6 +27,8 @@ class CreateAdminUsersTable extends Migration
                 $table->boolean('forbidden')->default(false);
                 $table->string('language', 2)->default('en');
 
+                $table->string('role');
+
                 $table->softDeletes('deleted_at');
                 $table->timestamps();
 

@@ -32,3 +32,19 @@ $factory->define(App\Models\Grade::class, function (Faker\Generator $faker) {
     ];
 });
 
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Course::class, function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Subject::class, function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+

@@ -4,3 +4,5 @@ import './profile-edit-password';
 import './level';
 import './role';
 import './grade';
+import './course';
+import './subject';

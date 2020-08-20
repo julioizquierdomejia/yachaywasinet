@@ -5,7 +5,7 @@ Vue.component('level-form', {
     data: function() {
         return {
             form: {
-                
+                title: '',
             }
         }
     }

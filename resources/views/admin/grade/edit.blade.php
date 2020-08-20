@@ -10,6 +10,7 @@
             <grade-form
                 :action="'{{ $grade->resource_url }}'"
                 :data="{{ $grade->toJson() }}"
+                :courses="{{ $courses }}"
                 v-cloak
                 inline-template>
             

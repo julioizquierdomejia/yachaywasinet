@@ -23,7 +23,7 @@ class IndexGrade extends FormRequest
     public function rules()
     {
         return [
-            'orderBy' => 'in:title,enabled|nullable',
+            'orderBy' => 'in:id,title,enabled|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

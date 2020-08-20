@@ -26,6 +26,7 @@ class StoreGrade extends FormRequest
         return [
             'title' => ['required', 'string'],
             'level_id' => ['required', 'array'],
+            'courses' => ['required', 'string'],
             'enabled' => ['required', 'boolean'],
         ];
     }
@@ -34,6 +35,7 @@ class StoreGrade extends FormRequest
     {
         $data = $this->only(collect($this->rules())->keys()->all());
         $data["level_id"] = $data["level_id"]["id"];
+        $data["course_id"] = $data["course_id"]["id"];
         return $data;
     }
 }

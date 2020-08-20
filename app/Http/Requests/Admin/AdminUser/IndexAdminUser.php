@@ -23,7 +23,7 @@ class IndexAdminUser extends FormRequest
     public function rules()
     {
         return [
-            'orderBy' => 'in:id,first_name,last_name,email,activated,forbidden,language|nullable',
+            'orderBy' => 'in:id,first_name,last_name,email,activated,forbidden,language,role_id|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

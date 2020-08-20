@@ -48,17 +48,19 @@ class AdminUsersController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'first_name', 'last_name', 'email', 'activated', 'forbidden', 'language'],
+            ['id', 'first_name', 'last_name', 'email', 'activated', 'forbidden', 'language', 'role_id'],
 
             // set columns to searchIn
-            ['id', 'first_name', 'last_name', 'email', 'language']
+            ['id', 'first_name', 'last_name', 'email', 'language', 'role_id']
         );
+
+        $roles = Role::all();
 
         if ($request->ajax()) {
             return ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled')];
         }
 
-        return view('admin.admin-user.index', ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled')]);
+        return view('admin.admin-user.index', ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled'), 'roles' => json_encode($roles)]);
 
     }
 
@@ -100,7 +102,9 @@ class AdminUsersController extends Controller
             return ['redirect' => url('admin/admin-users'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
-        return redirect('admin/admin-users');
+        return redirect('admin/admin-users', [
+            'roles' => Role::all(),
+        ]);
     }
 
     /**
@@ -129,11 +133,18 @@ class AdminUsersController extends Controller
         $this->authorize('admin.admin-user.edit', $adminUser);
 
         $adminUser->load('roles');
+        //Para poder mostrar role asignado
+        $role_id = Role::where('id', $adminUser['role_id'])->get();
+        if ($role_id) {
+            $adminUser['role_id'] = $role_id->first();
+        }
+        //$adminUser->load('role_id');
 
         return view('admin.admin-user.edit', [
             'adminUser' => $adminUser,
             'activation' => Config::get('admin-auth.activation_enabled'),
-            'roles' => Role::where('guard_name', $this->guard)->get(),
+            //'roles' => Role::where('guard_name', $this->guard)->get(),
+            'roles' => Role::all(),
         ]);
     }
 
@@ -148,14 +159,15 @@ class AdminUsersController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getModifiedData();
-
+        //No guarda role_id desde rules
+        $adminUser['role_id'] = $sanitized['role_id'];
         // Update changed values AdminUser
         $adminUser->update($sanitized);
 
         // But we do have a roles, so we need to attach the roles to the adminUser
-        if($request->input('roles')) {
+        /*if($request->input('roles')) {
             $adminUser->roles()->sync(collect($request->input('roles', []))->map->id->toArray());
-        }
+        }*/
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/admin-users'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

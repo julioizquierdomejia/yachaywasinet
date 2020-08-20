@@ -8,6 +8,7 @@
         :data="{{ $data->toJson() }}"
         :activation="!!'{{ $activation }}'"
         :url="'{{ url('admin/admin-users') }}'"
+        :roles="{{$roles}}"
         inline-template>
 
         <div class="row">

@@ -66,3 +66,25 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::post('/admin/grades/{grade}',                        'Admin\GradesController@update')->name('admin/grades/update');
     Route::delete('/admin/grades/{grade}',                      'Admin\GradesController@destroy')->name('admin/grades/destroy');
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(function () {
+    Route::get('/admin/courses',                                'Admin\CoursesController@index');
+    Route::get('/admin/courses/create',                         'Admin\CoursesController@create');
+    Route::post('/admin/courses',                               'Admin\CoursesController@store');
+    Route::get('/admin/courses/{course}/edit',                  'Admin\CoursesController@edit')->name('admin/courses/edit');
+    Route::post('/admin/courses/bulk-destroy',                  'Admin\CoursesController@bulkDestroy')->name('admin/courses/bulk-destroy');
+    Route::post('/admin/courses/{course}',                      'Admin\CoursesController@update')->name('admin/courses/update');
+    Route::delete('/admin/courses/{course}',                    'Admin\CoursesController@destroy')->name('admin/courses/destroy');
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(function () {
+    Route::get('/admin/subjects',                               'Admin\SubjectsController@index');
+    Route::get('/admin/subjects/create',                        'Admin\SubjectsController@create');
+    Route::post('/admin/subjects',                              'Admin\SubjectsController@store');
+    Route::get('/admin/subjects/{subject}/edit',                'Admin\SubjectsController@edit')->name('admin/subjects/edit');
+    Route::post('/admin/subjects/bulk-destroy',                 'Admin\SubjectsController@bulkDestroy')->name('admin/subjects/bulk-destroy');
+    Route::post('/admin/subjects/{subject}',                    'Admin\SubjectsController@update')->name('admin/subjects/update');
+    Route::delete('/admin/subjects/{subject}',                  'Admin\SubjectsController@destroy')->name('admin/subjects/destroy');
+});

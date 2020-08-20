@@ -12,8 +12,14 @@ Vue.component('admin-user-form', {
                 activated:  false ,
                 forbidden:  false ,
                 language:  '' ,
+                role_id: '',
                 
             }
         }
-    }
+    },
+    methods: {
+        roleSelected: function (values) {
+            
+        }
+    },
 });

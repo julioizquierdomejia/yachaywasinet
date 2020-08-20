@@ -75,6 +75,45 @@ return [
             'id' => "ID",
             'title' => "Title",
             'level_id' => 'Level',
+            'courses' => "Courses",
+            'enabled' => "Enabled",
+            
+        ],
+    ],
+
+    'course' => [
+        'title' => 'Courses',
+
+        'actions' => [
+            'index' => 'Courses',
+            'create' => 'New Course',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            'competence' => "Competence",
+            'enabled' => "Enabled",
+            
+        ],
+    ],
+
+    'subject' => [
+        'title' => 'Subjects',
+
+        'actions' => [
+            'index' => 'Subjects',
+            'create' => 'New Subject',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            'description' => "Description",
+            'course_id' => "Course",
+            'file' => "File",
             'enabled' => "Enabled",
             
         ],

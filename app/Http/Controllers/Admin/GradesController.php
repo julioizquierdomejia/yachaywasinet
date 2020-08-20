@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Grade\DestroyGrade;
 use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Grade;
 use App\Models\Level;
+use App\Models\Course;
 use Illuminate\Support\Facades\DB;
 
 class GradesController extends Controller
@@ -29,10 +30,10 @@ class GradesController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'title', 'level_id', 'levels.title as level', 'enabled'],
+            ['id', 'title', 'level_id', 'levels.title as level', 'enabled', 'courses'],
 
             // set columns to searchIn
-            ['id', 'title', 'level_id', 'enabled'],
+            ['id', 'title', 'level_id', 'enabled', 'courses'],
 
             function($query) use ($request){
                 $query->join('levels', 'levels.id', '=', 'grades.level_id');
@@ -90,7 +91,9 @@ class GradesController extends Controller
             return ['redirect' => url('admin/grades'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
-        return redirect('admin/grades');
+        return redirect('admin/grades', [
+            'courses' => Course::where('enabled', 1)->get(),
+        ]);
     }
 
     /**
@@ -122,7 +125,8 @@ class GradesController extends Controller
 
         return view('admin.grade.edit', [
             'grade' => $grade,
-            'level_type' => Level::all()
+            'level_type' => Level::all(),
+            'courses' => Course::where('enabled', 1)->get(),
         ]);
     }
 

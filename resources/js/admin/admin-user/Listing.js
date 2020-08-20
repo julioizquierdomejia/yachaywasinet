@@ -25,5 +25,9 @@ Vue.component('admin-user-listing', {
             type: Boolean,
             required: true
         },
+        /*'roles': {
+            type: Array,
+            required: true
+        }*/
     }
 });

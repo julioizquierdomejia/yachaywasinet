@@ -7,9 +7,19 @@ Vue.component('grade-form', {
             form: {
                 title: '',
                 level_id: '',
+                courses: '[]',
                 enabled: true
-            }
+            },
+            selectedCourses: [],
         }
-    }
+    },
+    methods: {
+        updateCourses: function (values) {
+            this.form.courses = JSON.stringify(this.selectedCourses);
+        }
+    },
+    created: function () {
+        this.selectedCourses = JSON.parse(this.form.courses);
+    },
 
 });

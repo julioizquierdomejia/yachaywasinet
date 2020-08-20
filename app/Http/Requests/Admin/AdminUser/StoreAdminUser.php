@@ -33,7 +33,8 @@ class StoreAdminUser extends FormRequest
             'forbidden' => ['required', 'boolean'],
             'language' => ['required', 'string'],
                 
-            'roles' => ['array'],
+            //'roles' => ['array'],
+            'role_id' => ['required'],
                 
         ];
 
@@ -59,6 +60,9 @@ class StoreAdminUser extends FormRequest
         if(!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         }
+
+        $data["role_id"] = $data["role_id"]["id"];
+
         return $data;
     }
 }

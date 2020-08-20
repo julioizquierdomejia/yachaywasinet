@@ -33,7 +33,8 @@ class UpdateAdminUser extends FormRequest
             'forbidden' => ['sometimes', 'boolean'],
             'language' => ['sometimes', 'string'],
                 
-            'roles' => ['sometimes', 'array'],
+            //'roles' => ['sometimes', 'array'],
+            'role_id' => ['required'],
                 
         ];
 
@@ -62,6 +63,11 @@ class UpdateAdminUser extends FormRequest
         if(!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         }
+
+        if (is_array($data["role_id"])) {
+            $data["role_id"] = $data["role_id"]["id"];
+        }
+
         return $data;
     }
 }

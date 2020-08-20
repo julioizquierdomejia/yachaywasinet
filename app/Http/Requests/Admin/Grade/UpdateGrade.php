@@ -26,6 +26,7 @@ class UpdateGrade extends FormRequest
         return [
             'title' => ['sometimes', 'string'],
             'level_id' => ['required'],
+            'courses' => ['sometimes', 'string'],
             'enabled' => ['sometimes', 'boolean'],
                     ];
     }
@@ -51,6 +52,7 @@ class UpdateGrade extends FormRequest
         $data = $this->only(collect($this->rules())->keys()->all());
         if (is_array($data["level_id"]))
             $data["level_id"] = $data["level_id"]["id"];
+            $data["course_id"] = $data["course_id"]["id"];
 
         return $data;
     }

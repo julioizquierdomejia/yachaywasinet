@@ -34,7 +34,7 @@ class RolesController extends Controller
             ['id', 'name', 'guard_name'],
 
             function($query) use ($request){
-                $query->where('guard_name', '<>', 'admin');
+                //$query->where('guard_name', '<>', 'admin');
             }
         );
 
@@ -107,7 +107,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        $this->authorize('admin.role.edit', $role);
+        //$this->authorize('admin.role.edit', $role);
 
 
         return view('admin.role.edit', [
@@ -150,11 +150,17 @@ class RolesController extends Controller
      */
     public function destroy(DestroyRole $request, Role $role)
     {
-        $role->delete();
-
-        if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+        if ($role->guard_name != 'admin') {
+            $role->delete();
+            
+            if ($request->ajax()) {
+                return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+            }
         }
+
+        /*if ($request->ajax()) {
+            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+        }*/
 
         return redirect()->back();
     }

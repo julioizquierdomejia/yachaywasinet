@@ -5,7 +5,8 @@ Vue.component('role-form', {
     data: function() {
         return {
             form: {
-                
+                name: '',
+        		guard_name: '',
             }
         }
     }

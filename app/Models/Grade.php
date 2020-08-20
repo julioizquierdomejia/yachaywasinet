@@ -9,6 +9,7 @@ class Grade extends Model
     protected $fillable = [
         'title',
         'level_id',
+        'courses',
         'enabled',
     ];
     
@@ -22,7 +23,7 @@ class Grade extends Model
     ];
     
     
-    public $timestamps = false;
+    public $timestamps = true;
     
     protected $appends = ['resource_url'];
 
