@@ -1,3 +1,4 @@
+.DS_Store
 /node_modules
 /public/hot
 /public/storage
@@ -10,3 +11,14 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
+composer.lock
+package-lock.json
+
+public/css/*
+public/js/*
+public/fonts/vendor/*
+public/media
+public/images/vendor/*
+public/uploads
+storage/uploads
+public/cms/uploads
