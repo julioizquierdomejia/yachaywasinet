@@ -6,6 +6,10 @@ Vue.component('grade-listing', {
         'leveltype': {
             type: Array,
             required: true
+        },
+        'courses': {
+            type: Array,
+            required: true
         }
     }
 });

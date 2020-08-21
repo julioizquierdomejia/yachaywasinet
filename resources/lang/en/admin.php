@@ -94,6 +94,7 @@ return [
             'id' => "ID",
             'title' => "Title",
             'competence' => "Competence",
+            'slug' => "Slug",
             'enabled' => "Enabled",
             
         ],
@@ -114,6 +115,7 @@ return [
             'description' => "Description",
             'course_id' => "Course",
             'file' => "File",
+            'slug' => "Slug",
             'enabled' => "Enabled",
             
         ],

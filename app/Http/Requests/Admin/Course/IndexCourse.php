@@ -23,7 +23,7 @@ class IndexCourse extends FormRequest
     public function rules()
     {
         return [
-            'orderBy' => 'in:id,title,competence|nullable',
+            'orderBy' => 'in:id,title,slug,competence|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

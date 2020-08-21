@@ -10,7 +10,7 @@ use App\Http\Requests\Admin\Grade\DestroyGrade;
 use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Grade;
 use App\Models\Level;
-use App\Models\Course;
+//use App\Models\Course;
 use Illuminate\Support\Facades\DB;
 
 class GradesController extends Controller
@@ -67,8 +67,11 @@ class GradesController extends Controller
     {
         $this->authorize('admin.grade.create');
 
+        $courses = DB::table('courses')->where('enabled', 1)->select('id', 'title')->get();
+
         return view('admin.grade.create', [
-            'level_type' => Level::all()
+            'level_type' => Level::all(),
+            'courses' => $courses,
         ]);
     }
 
@@ -87,12 +90,14 @@ class GradesController extends Controller
         // Store the Grade
         $grade = Grade::create($sanitized);
 
+        $courses = DB::table('courses')->where('enabled', 1)->select('id', 'title')->get();
+
         if ($request->ajax()) {
             return ['redirect' => url('admin/grades'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
         return redirect('admin/grades', [
-            'courses' => Course::where('enabled', 1)->get(),
+            'courses' => $courses,
         ]);
     }
 
@@ -122,11 +127,12 @@ class GradesController extends Controller
         $this->authorize('admin.grade.edit', $grade);
 
         $grade->load('level_id');
+        $courses = DB::table('courses')->where('enabled', 1)->select('id', 'title')->get();
 
         return view('admin.grade.edit', [
             'grade' => $grade,
             'level_type' => Level::all(),
-            'courses' => Course::where('enabled', 1)->get(),
+            'courses' => $courses,
         ]);
     }
 

@@ -35,7 +35,6 @@ class StoreGrade extends FormRequest
     {
         $data = $this->only(collect($this->rules())->keys()->all());
         $data["level_id"] = $data["level_id"]["id"];
-        $data["course_id"] = $data["course_id"]["id"];
         return $data;
     }
 }

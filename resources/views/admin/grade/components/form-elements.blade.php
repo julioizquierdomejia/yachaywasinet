@@ -18,7 +18,6 @@
     <label for="courses" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.grade.columns.courses') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <div>
-            <input type="hidden" id="courses" name="courses" v-model="form.courses">
             <multiselect v-model="selectedCourses" :options="{{ $courses->toJson() }}" open-direction="bottom" :searchable="false" :allow-empty="false" placeholder="{{ trans('admin.grade.columns.courses') }}" :multiple="true" :selected="selectedCourses" @input="updateCourses" :show-labels="true" track-by="id" label="title" key="id"></multiselect>
         </div>
         <div v-if="errors.has('courses')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('courses') }}</div>

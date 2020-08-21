@@ -26,6 +26,7 @@ class StoreCourse extends FormRequest
         return [
             'title' => ['required', 'string', 'unique:courses'],
             'competence' => ['required', 'string'],
+            'slug' => ['required', 'string'],
             'enabled' => ['required', 'boolean'],
         ];
     }

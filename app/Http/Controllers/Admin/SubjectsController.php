@@ -29,10 +29,10 @@ class SubjectsController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'title', 'description', 'course_id', 'enabled'],
+            ['id', 'title', 'description', 'course_id', 'slug', 'enabled'],
 
             // set columns to searchIn
-            ['id', 'title', 'description', 'course_id', 'enabled']
+            ['id', 'title', 'description', 'course_id', 'slug', 'enabled']
         );
 
         $courses = Course::all();

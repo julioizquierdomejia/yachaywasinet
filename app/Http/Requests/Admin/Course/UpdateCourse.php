@@ -26,6 +26,7 @@ class UpdateCourse extends FormRequest
         return [
             'title' => ['sometimes', 'string', 'unique:courses'],
             'competence' => ['required', 'string'],
+            'slug' => ['required', 'string'],
             'enabled' => ['sometimes', 'boolean'],
                     ];
     }

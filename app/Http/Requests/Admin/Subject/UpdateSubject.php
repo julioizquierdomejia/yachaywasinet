@@ -27,6 +27,7 @@ class UpdateSubject extends FormRequest
             'title' => ['sometimes', 'string'],
             'description' => ['required', 'string'],
             'course_id' => ['required'],
+            'slug' => ['required', 'string'],
             'enabled' => ['sometimes', 'boolean'],
                     ];
     }

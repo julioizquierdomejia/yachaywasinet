@@ -23,7 +23,7 @@ class IndexSubject extends FormRequest
     public function rules()
     {
         return [
-            'orderBy' => 'in:id,title,description|nullable',
+            'orderBy' => 'in:id,title,description,slug,enabled|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

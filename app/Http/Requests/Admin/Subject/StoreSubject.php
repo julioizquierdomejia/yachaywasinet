@@ -27,6 +27,7 @@ class StoreSubject extends FormRequest
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
             'course_id' => ['required'],
+            'slug' => ['required', 'string'],
             'enabled' => ['required', 'boolean'],
         ];
     }

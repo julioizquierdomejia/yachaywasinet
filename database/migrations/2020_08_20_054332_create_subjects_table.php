@@ -19,6 +19,7 @@ class CreateSubjectsTable extends Migration
             $table->text('description');
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses');
+            $table->string('slug')->unique();
             $table->boolean('enabled');
             $table->timestamps();
         });
@@ -32,7 +33,7 @@ class CreateSubjectsTable extends Migration
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->dropForeign('course_id');
+            $table->dropForeign('subjects_course_id_foreign');
         });
         Schema::dropIfExists('subjects');
     }

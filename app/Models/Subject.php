@@ -17,8 +17,9 @@ class Subject extends Model implements HasMediaCollections, HasMediaConversions
     protected $fillable = [
         'title',
         'description',
+        'course_id',
+        'slug',
         'enabled',
-        'course_id'
     ];
     
     protected $hidden = [
@@ -48,7 +49,9 @@ class Subject extends Model implements HasMediaCollections, HasMediaConversions
 
     public function registerMediaCollections() {
         $this->addMediaCollection('file')
-            ->accepts('application/pdf');
+            ->accepts('application/pdf')
+            ->maxNumberOfFiles('1')
+            ->maxFileSize(5245000);
     }
 
     public function registerMediaConversions(Media $media = null)

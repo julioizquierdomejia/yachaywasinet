@@ -50,9 +50,12 @@ class UpdateGrade extends FormRequest
     public function getModifiedData()
     {
         $data = $this->only(collect($this->rules())->keys()->all());
-        if (is_array($data["level_id"]))
+        if (is_array($data["level_id"])) {
             $data["level_id"] = $data["level_id"]["id"];
-            $data["course_id"] = $data["course_id"]["id"];
+        }
+        if (is_array($data['courses'])) {
+            $data["courses"] = $data["courses"]["id"];
+        }
 
         return $data;
     }

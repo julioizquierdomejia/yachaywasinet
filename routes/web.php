@@ -12,7 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('online.home');
+});
+
+Route::get('/nosotros', function () {
+    return view('online.about/index');
+})->name('nosotros');
+
+Route::prefix('cursos')->group(function () {
+    Route::get('/', 'Online\CourseController@index');
+    Route::get('/{slug}', 'Online\CourseController@detail')->name('courseDetail');
+});
+
+Route::prefix('temas')->group(function () {
+    Route::get('/', 'Online\SubjectController@index');
+    Route::get('/{slug}', 'Online\SubjectController@detail')->name('subjectDetail');
 });
 
 
