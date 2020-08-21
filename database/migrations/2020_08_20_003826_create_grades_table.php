@@ -31,7 +31,7 @@ class CreateGradesTable extends Migration
     public function down()
     {
         Schema::table('grades', function (Blueprint $table) {
-            $table->dropForeign('level_id');
+            $table->dropForeign('grades_level_id_foreign');
         });
         Schema::dropIfExists('grades');
     }

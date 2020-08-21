@@ -27,7 +27,7 @@ class AddRoleToAdminUsers extends Migration
     public function down()
     {
         Schema::table('admin_users', function (Blueprint $table) {
-            $table->dropForeign('role_id');
+            $table->dropForeign('admin_users_role_id_foreign');
             $table->dropColumn('role_id');
         });
     }
