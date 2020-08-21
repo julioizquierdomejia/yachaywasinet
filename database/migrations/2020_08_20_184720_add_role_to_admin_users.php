@@ -14,7 +14,7 @@ class AddRoleToAdminUsers extends Migration
     public function up()
     {
         Schema::table('admin_users', function (Blueprint $table) {
-            $table->unsignedInteger('role_id')->after('language');
+            $table->unsignedInteger('role_id')->nullable()->after('language');
             $table->foreign('role_id')->references('id')->on('roles');
         });
     }
