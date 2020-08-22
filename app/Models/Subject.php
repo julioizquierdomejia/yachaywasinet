@@ -51,8 +51,7 @@ class Subject extends Model implements HasMediaCollections, HasMediaConversions
         $this->addMediaCollection('file')
             ->accepts('application/pdf')
             ->maxNumberOfFiles(1)
-            //->maxFileSize(5245000)
-            ;
+            ->maxFileSize(5245000);
     }
 
     public function registerMediaConversions(Media $media = null)
