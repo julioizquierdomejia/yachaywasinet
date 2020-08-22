@@ -17,10 +17,11 @@
 					</li>
 					@if (Route::has('login'))
 	                    @auth
-	                    <li class="nav-item col-12 col-md-7 col-lg-auto"><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
-	                    @else
 	                    <li class="nav-item col-12 col-md-7 col-lg-auto"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
 	                    <li class="nav-item col-12 col-md-7 col-lg-auto"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+	                    @else
+	                    <li class="nav-item col-12 col-md-7 col-lg-auto"><a class="nav-link" href="/cursos">Cursos</a></li>
+	                    <li class="nav-item col-12 col-md-7 col-lg-auto"><a class="nav-link" href="/temas">Temas</a></li>
 	                    @endauth
 	            	@endif
 				</ul>
